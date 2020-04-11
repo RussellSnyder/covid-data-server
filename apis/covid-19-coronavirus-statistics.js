@@ -1,15 +1,13 @@
 const axios = require('axios');
 const groupBy = require('lodash/groupBy');
 const pick = require('lodash/pick');
-const dotenv = require('dotenv');
-dotenv.config();
 
 const instance = axios.create({
   baseURL: 'https://covid-19-coronavirus-statistics.p.rapidapi.com/v1',
-  timeout: 1000,
+  timeout: 3000,
 	"headers": {
 		"x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-		"x-rapidapi-key": process.env.API_KEY_CORONAVIRUS_STATISTICS,
+		"x-rapidapi-key": process.env.API_KEY,
   }
 });
 
