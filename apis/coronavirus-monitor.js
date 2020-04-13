@@ -25,8 +25,10 @@ const getCountryDataOverTime = async (country) => {
 		const oneADay = {}
 
 		forEach(groupByDay, (value, key) => {
-			const lastEntryIndex = value.length - 1
-			oneADay[key] = value[lastEntryIndex]
+			const lastValue = value[value.length - 1] 
+			// parse 1,000s here
+			lastValue['total_deaths'] = toNumber(lastValue['total_deaths'])
+			oneADay[key] = lastValue
 		})
 
 		return oneADay

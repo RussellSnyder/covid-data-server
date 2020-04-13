@@ -1,7 +1,7 @@
 const forEach = require('lodash/forEach')
 
 const equivalentCountries = {
-  USA: 'US',
+  US: 'USA',
 }
 
 const normalizeCountryName = (countryName) => {

@@ -16,22 +16,18 @@ app.get('/api/countries', (req, res) => {
     const [countryData1, countryData2] = values
     const normalizedCountryData = normalizeCountryData([countryData1, countryData2])
 
-    res.json({
-      currentCountryData: normalizedCountryData
-    })
+    res.json(normalizedCountryData)
   });
 });
 
-app.get('/api/countries/:country', (req, res) => {
+app.get('/api/country/:country', (req, res) => {
   const { country } = req.params
+
   Promise.all([
     overTime1(country),
   ]).then(function(values) {
     const [overTime1] = values
-
-    res.json({
-      countryDataOverTime: overTime1
-    })
+    res.json(overTime1)
   });
 });
 
