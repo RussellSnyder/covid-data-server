@@ -6,7 +6,7 @@ const { getDataGroupedByCountry: countryData2, getCountryDataOverTime: overTime1
 const { normalizeCountryData } = require('./utils')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.get('/api/countries', (req, res) => {
   Promise.all([
