@@ -2,6 +2,7 @@ const forEach = require('lodash/forEach')
 
 const equivalentCountries = {
   US: 'USA',
+  'United Kingdom': 'UK',
 }
 
 const normalizeCountryName = (countryName) => {
@@ -11,6 +12,8 @@ const normalizeCountryName = (countryName) => {
 
   return equivalentCountries[countryName]
 }
+
+exports.normalizeCountryName = normalizeCountryName;
 
 exports.toNumber = (number) => parseFloat(number.replace(/,/g, ''));
 

@@ -1,6 +1,7 @@
 const axios = require('axios');
 const groupBy = require('lodash/groupBy');
 const pick = require('lodash/pick');
+const { normalizeCountryName } = require('../utils');
 
 const instance = axios.create({
   baseURL: 'https://covid-19-coronavirus-statistics.p.rapidapi.com/v1',
@@ -25,7 +26,12 @@ const getDataGroupedByCountry = async () => {
 	if (res.status === 200) {
 		const { covid19Stats } = res.data.data;
 
-		const groupByCountry = groupBy(covid19Stats, 'country')
+		let rawGroupByCountry = groupBy(covid19Stats, 'country')
+
+		const groupByCountry = {};
+		Object.keys(rawGroupByCountry).forEach(countryName => {
+			groupByCountry[normalizeCountryName(countryName)] = rawGroupByCountry[countryName]
+		})
 
 		const aggrigateCountryRegions = {}; 
 
