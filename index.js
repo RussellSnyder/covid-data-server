@@ -1,11 +1,15 @@
 const express = require('express')
 const dotenv = require('dotenv');
 dotenv.config();
+var cors = require('cors')
+
 const { getDataGroupedByCountry: countryData1 } = require('./apis/covid-19-coronavirus-statistics');
 const { getDataGroupedByCountry: countryData2, getCountryDataOverTime: overTime1 } = require('./apis/coronavirus-monitor');
 const { normalizeCountryData } = require('./utils')
 
 const app = express()
+app.use(cors())
+
 const port = process.env.PORT || 3000
 
 app.get('/api/countries', (req, res) => {
